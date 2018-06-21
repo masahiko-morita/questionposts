@@ -14,8 +14,8 @@
                 </div>
             </aside>
             <div class="col-xs-8">
-                @if (count($microposts) > 0)
-                    @include('microposts.microposts', ['microposts' => $microposts])
+                @if (count($questionposts) > 0)
+                    @include('questionposts.questionposts', ['questionposts' => $questionposts])
                 @endif
             </div>
         </div>
