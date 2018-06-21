@@ -20,7 +20,7 @@
                 </div>
                 
                 <div class="form-group">
-                    {!! Form::label('age', '年齢') !!}
+                    {!! Form::label('age', '年齢（数字のみ）') !!}
                     {!! Form::text('age', old('age'), ['class' => 'form-control']) !!}
                 </div>
                 
