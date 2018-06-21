@@ -13,17 +13,14 @@ class QuestionpostsController extends Controller
         $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();
-            $questionposts = $user->questionposts()->orderBy('created_at', 'desc')->paginate(10);
+            $questionposts = $user->feed_questionposts()->orderBy('created_at', 'desc')->paginate(10);
 
             $data = [
                 'user' => $user,
                 'questionposts' => $questionposts,
             ];
-            $data += $this->counts($user);
-            return view('users.show', $data);
-        }else {
-            return view('welcome');
         }
+        return view('welcome', $data);
     }
     public function store(Request $request)
     {
