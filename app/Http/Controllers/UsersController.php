@@ -60,4 +60,34 @@ class UsersController extends Controller
 
         return view('users.followers', $data);
     }
+    
+    public function yes_questions($id)
+    {
+        $user = User::find($id);
+        $yes_questions = $user->yes_questions()->paginate(10);
+
+        $data = [
+            'user' => $user,
+            'yes_questions' => $yes_questions,
+        ];
+
+        $data += $this->counts($user);
+
+        return view('users.yes_questions', $data);
+    }
+    
+    public function no_questions($id)
+    {
+        $user = User::find($id);
+        $no_questions = $user->no_questions()->paginate(10);
+
+        $data = [
+            'user' => $user,
+            'no_questions' => $no_questions,
+        ];
+
+        $data += $this->counts($user);
+
+        return view('users.no_questions', $data);
+    }
 }

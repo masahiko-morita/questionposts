@@ -13,6 +13,9 @@
                 <p>{!! nl2br(e($questionpost->content)) !!}</p>
             </div>
             <div>
+                @include('user_yes.yes_button', ['questionpost' => $questionpost])
+                @include('user_no.no_button', ['questionpost' => $questionpost])
+                
                 @if (Auth::id() == $questionpost->user_id)
                     {!! Form::open(['route' => ['questionposts.destroy', $questionpost->id], 'method' => 'delete']) !!}
                         {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}

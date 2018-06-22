@@ -23,12 +23,16 @@ Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
+    Route::resource('users', 'UsersController', ['only' => ['index', 'show','yes_questions']]);
      Route::group(['prefix' => 'users/{id}'], function () {
         Route::post('follow', 'UserFollowController@store')->name('user.follow');
         Route::delete('unfollow', 'UserFollowController@destroy')->name('user.unfollow');
         Route::get('followings', 'UsersController@followings')->name('users.followings');
         Route::get('followers', 'UsersController@followers')->name('users.followers');
+        Route::post('yes', 'UserYesController@store')->name('user.yes');
+        Route::post('no', 'UserNoController@store')->name('user.no');
+        Route::get('yes_questions', 'UsersController@yes_questions')->name('users.yes_questions');
+        Route::get('no_questions', 'UsersController@no_questions')->name('users.no_questions');
     });
     Route::resource('questionposts', 'QuestionpostsController', ['only' => ['store', 'destroy']]);
 });

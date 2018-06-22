@@ -32,7 +32,7 @@ class User extends Authenticatable
         return $this->hasMany(Question::class);
     }
     
-    public function feed_microposts()
+    public function feed_questionposts()
     {
         $follow_user_ids = $this->followings()-> pluck('users.id')->toArray();
         $follow_user_ids[] = $this->id;
@@ -82,11 +82,57 @@ class User extends Authenticatable
         // do nothing if not following
         return false;
     }
-}
+    }
 
 
     public function is_following($userId) {
     return $this->followings()->where('follow_id', $userId)->exists();
-}
+    }
+    
+    public function yes_questions()
+    {
+        return $this->belongsToMany(Question::class, 'question_user', 'user_id', 'question_id')->withTimestamps();
+    }
+    
+    public function yes($questionId)
+    {
+    // confirm if already following
+    $exist = $this->is_yesing($questionId);
+    
+    if ($exist) {
+        // do nothing if already following
+        return false;
+    } else {
+        // follow if not following
+        $this->yes_questions()->attach($questionId);
+        return true;
+    }
+    }
 
+    public function is_yesing($questionId) {
+        return $this->yes_questions()->where('question_id', $questionId)->exists();
 }
+    public function no_questions()
+    {
+        return $this->belongsToMany(Question::class, 'user_question', 'user_id', 'question_id')->withTimestamps();
+    }
+    
+    public function no($questionId)
+    {
+    // confirm if already following
+    $exist = $this->is_noing($questionId);
+    
+    if ($exist) {
+        // do nothing if already following
+        return false;
+    } else {
+        // follow if not following
+        $this->no_questions()->attach($questionId);
+        return true;
+    }
+    }
+
+    public function is_noing($questionId) {
+        return $this->no_questions()->where('question_id', $questionId)->exists();
+}
+}    
