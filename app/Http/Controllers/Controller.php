@@ -27,4 +27,17 @@ class Controller extends BaseController
             
         ];
     }
+    public function count($questionpost) {
+        $count_yes_users = $questionpost->yes_users()->count();
+        $count_no_users = $questionpost->no_users()->count();
+        
+        return [
+            'count_yes_users' => $count_yes_users,
+            'count_no_users' => $count_no_users,
+            
+        ];
+    }
+    
+    
+    
 }

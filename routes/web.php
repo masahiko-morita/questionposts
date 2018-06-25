@@ -34,5 +34,5 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('yes_questions', 'UsersController@yes_questions')->name('users.yes_questions');
         Route::get('no_questions', 'UsersController@no_questions')->name('users.no_questions');
     });
-    Route::resource('questionposts', 'QuestionpostsController', ['only' => ['store', 'destroy']]);
+    Route::resource('questionposts', 'QuestionpostsController', ['only' => ['store','show','destroy']]);
 });

@@ -9,8 +9,12 @@
             <div>
                 {!! link_to_route('users.show', $user->name, ['id' => $user->id]) !!} <span class="text-muted">posted at {{ $questionpost->created_at }}</span>
             </div>
-            <div>
-                <p>{!! nl2br(e($questionpost->content)) !!}</p>
+            <div class="panel panel-default">
+                @if ($questionpost->id)
+                    <p class="item-title"><a href="{{ route('questionposts.show', $questionpost->id) }}">{!! nl2br(e($questionpost->content)) !!}</a></p>
+                @else
+                    <p class="item-title">{!! nl2br(e($questionpost->content)) !!}</p>
+                @endif
             </div>
             <div>
                 @include('user_yes.yes_button', ['questionpost' => $questionpost])

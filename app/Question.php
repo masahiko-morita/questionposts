@@ -13,5 +13,25 @@ class Question extends Model
         return $this->belongsTo(User::class);
     }
     
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->withTimestamps();
+    }
+    
+    public function userss()
+    {
+        return $this->belongsToMany(User::class, 'user_question')->withTimestamps();
+    }
+
+    public function yes_users()
+    {
+        return $this->users();
+    }
+    
+    public function no_users()
+    {
+        return $this->userss();
+    }
+    
     
 }

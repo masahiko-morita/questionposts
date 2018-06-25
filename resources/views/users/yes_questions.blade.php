@@ -9,6 +9,8 @@
                 </div>
                 <div class="panel-body">
                     <img class="media-object img-rounded img-responsive" src="{{ Gravatar::src($user->email, 500) }}" alt="">
+                    <h3 class="panel-title">年齢：{{ $user->age }}歳</h3>
+                　　<h3 class="panel-title">性別：{{ $user->gender }}</h3>
                 </div>
             </div>
             @include('user_follow.follow_button', ['user' => $user])

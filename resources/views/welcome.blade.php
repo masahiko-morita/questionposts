@@ -20,11 +20,15 @@
             </div>
         </div>
    @else    
-    <div class="center jumbotron">
-        <div class="text-center">
-            <h1>Welcome to the Questionposts</h1>
-            {!! link_to_route('signup.get', 'Sign up now!', null, ['class' => 'btn btn-lg btn-primary']) !!}
+   @section('cover')
+    <div class="cover">
+        <div class="cover-inner">
+            <div class="cover-contents">
+                <h1>これってありかなしか知りたくない？</h1>
+                <a href="{{ route('signup.get') }}" class="btn btn-success btn-lg">QuestionPostsを始める</a>
+            </div>
         </div>
     </div>
+    @endsection    
    @endif
 @endsection

@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 
+use App\User;
+
+use App\Question;
+
 class QuestionpostsController extends Controller
 {
     public function index()
@@ -33,6 +37,23 @@ class QuestionpostsController extends Controller
         ]);
 
         return redirect()->back();
+    }
+    public function show($id)
+    {
+      $questionpost = Question::find($id);
+      $yes_users = $questionpost->yes_users;
+      $no_users = $questionpost->no_users;
+
+      $data = [
+            'questionpost' => $questionpost,
+            'yes_users' => $yes_users,
+            'no_users' => $no_users,
+            
+        ];
+
+        $data += $this->count($questionpost);
+
+        return view('questionposts.show', $data);
     }
     
     public function destroy($id)
