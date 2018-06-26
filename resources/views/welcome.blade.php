@@ -40,7 +40,7 @@
     <div class="cover">
         <div class="cover-inner">
             <div class="cover-contents">
-                <h1>これってありかなしか知りたくない？</h1>
+                <h1>人の趣向を簡単に測ってみない？</h1>
                 <a href="{{ route('signup.get') }}" class="btn btn-success btn-lg">QuestionPostsを始める</a>
             </div>
         </div>
