@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-inverse navbar-static-top">
+    <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -13,9 +13,16 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                 @if (Auth::check())
-                        <li>{!! link_to_route('users.index', 'Users') !!}</li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-search"> 検索</span></a>
+                            <ul class="dropdown-menu">
+                                <li>{!! link_to_route('questionposts.search', '質問を検索') !!}</li>
+                                <li role="separator" class="divider"></li>
+                                <li>{!! link_to_route('users.search', 'ユーザー検索') !!}</li>
+                            </ul>    
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"> {{ Auth::user()->name }}</span></a>
                             <ul class="dropdown-menu">
                                 <li>{!! link_to_route('users.show', 'マイプロフィール', ['id' => Auth::id()]) !!}</li>
                                 <li role="separator" class="divider"></li>

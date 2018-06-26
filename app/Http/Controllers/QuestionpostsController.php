@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
 
 use App\Http\Controllers\Controller;
 
@@ -17,7 +17,7 @@ class QuestionpostsController extends Controller
         $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();
-            $questionposts = $user->feed_questionposts()->orderBy('created_at', 'desc')->paginate(10);
+            $questionposts = $user->feed_questionposts()->orderBy('created_at', 'desc')->paginate(5);
 
             $data = [
                 'user' => $user,
@@ -65,5 +65,19 @@ class QuestionpostsController extends Controller
         }
 
         return redirect()->back();
+    }
+    
+    public function search(){
+	$query = Request::get('q');
+
+	if ($query) {
+		$questionposts = Question::where('content', 'LIKE', "%$query%")->paginate(10);
+	}else{
+		$questionposts = null;
+	}
+
+	return view('questionposts.search',
+	['questionposts' => $questionposts,
+	]);
     }
 }

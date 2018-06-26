@@ -14,6 +14,15 @@
                 </div>
             </aside>
             <div class="col-xs-8">
+                @if (Auth::id() == $user->id)
+                  {!! Form::open(['route' => 'questionposts.store']) !!}
+                      <div class="form-group">
+                          <h3>気になる質問を投稿する</h3>
+                          {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
+                          {!! Form::submit('投稿する', ['class' => 'btn btn-primary btn-block']) !!}
+                      </div>
+                  {!! Form::close() !!}
+                @endif
                 @if (count($questionposts) > 0)
                     @include('questionposts.questionposts', ['questionposts' => $questionposts])
                 @endif

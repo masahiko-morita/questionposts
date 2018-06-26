@@ -1,3 +1,4 @@
+@if (count($questionposts) > 0)
 <ul class="media-list">
 @foreach ($questionposts as $questionpost)
     <?php $user = $questionpost->user; ?>
@@ -18,7 +19,6 @@
             </div>
             <div>
                 @include('user_yes.yes_button', ['questionpost' => $questionpost])
-                @include('user_no.no_button', ['questionpost' => $questionpost])
                 
                 @if (Auth::id() == $questionpost->user_id)
                     {!! Form::open(['route' => ['questionposts.destroy', $questionpost->id], 'method' => 'delete']) !!}
@@ -31,3 +31,4 @@
 @endforeach
 </ul>
 {!! $questionposts->render() !!}
+@endif
