@@ -16,7 +16,7 @@
             <div class="yes-users">
                 <div class="panel panel-info">
                     <div class="panel-heading text-center">
-                        Yesしたユーザ<span class="badge">{{ $count_yes_users }}</span></a></li>
+                        {{ $questionpost->choice1 }}派<span class="badge">{{ $count_yes_users }}</span></a></li>
                     </div>
                     <div class="panel-body">
                         @foreach ($yes_users as $user)
@@ -30,7 +30,7 @@
             <div class="no-users">
                 <div class="panel panel-danger">
                     <div class="panel-heading text-center">
-                        Noしたユーザ<span class="badge">{{ $count_no_users }}</span></a></li>
+                        {{ $questionpost->choice2 }}派<span class="badge">{{ $count_no_users }}</span></a></li>
                     </div>
                     <div class="panel-body">
                         @foreach ($no_users as $user)
@@ -43,7 +43,7 @@
         </div>
     <!--</div>-->
     <div class = "chart">
-  <h1>{{ $questionpost->content}}に関する集計結果</h1>
+  <h1>{{ $questionpost->content }}に関する集計結果</h1>
 
   <div style="width: 50%">
     <canvas id="chart" height="450" width="500"></canvas>
@@ -57,13 +57,13 @@
       value: "{{ $count_yes_users }}",
       color:"blue",
       highlight: "blue",
-      label: "Yes"
+      label: "{{ $questionpost->choice1 }}"
     },
     {
       value: "{{ $count_no_users }}",
       color: "red",
       highlight: "red",
-      label: "No"
+      label: "{{ $questionpost->choice2 }}"
     }
     
   ];

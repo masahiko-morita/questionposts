@@ -91,17 +91,5 @@ class UsersController extends Controller
         return view('users.no_questions', $data);
     }
     
-    public function search(){
-	$query = Request::get('q');
-
-	if ($query) {
-		$users = User::where('name', 'LIKE', "%$query%")->paginate(10);
-	}else{
-		$users = null;
-	}
-
-	return view('users.search',
-	['users' => $users,
-	]);
-}
+    
 }

@@ -36,7 +36,7 @@ Route::group(['middleware' => ['auth']], function () {
         // Route::get('search', 'UsersController@search')->name('users.search');
     });
     Route::resource('questionposts', 'QuestionpostsController', ['only' => ['store','show','destroy']]);
-    Route::get('search', 'UsersController@search')->name('users.search');
-    Route::get('questionsearch', 'QuestionpostsController@search')->name('questionposts.search');
+    Route::get('search', 'SearchController@usersearch')->name('users.search');
+    Route::get('questionsearch', 'SearchController@questionpostsearch')->name('questionposts.search');
     
 });

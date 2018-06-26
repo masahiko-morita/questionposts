@@ -27,7 +27,14 @@
                   {!! Form::open(['route' => 'questionposts.store']) !!}
                       <div class="form-group">
                           <h3>気になる質問を投稿する</h3>
+                          {!! Form::label('content', '質問内容:') !!}
                           {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
+                          
+                          {!! Form::label('choice1', '選択肢一つ目:') !!}
+                          {!! Form::textarea('choice1', old('choice1'), ['class' => 'form-control', 'rows' => '1']) !!}
+                          
+                          {!! Form::label('choice2', '選択肢二つ目:') !!}
+                          {!! Form::textarea('choice2', old('choice2'), ['class' => 'form-control', 'rows' => '1']) !!}
                           {!! Form::submit('投稿する', ['class' => 'btn btn-primary btn-block']) !!}
                       </div>
                   {!! Form::close() !!}

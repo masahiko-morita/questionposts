@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Request;
+use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 
@@ -30,10 +30,14 @@ class QuestionpostsController extends Controller
     {
         $this->validate($request, [
             'content' => 'required|max:191',
+            'choice1' => 'required|max:191',
+            'choice2' => 'required|max:191',
         ]);
 
         $request->user()->questionposts()->create([
             'content' => $request->content,
+            'choice1' => $request->choice1,
+            'choice2' => $request->choice2,
         ]);
 
         return redirect()->back();
@@ -67,17 +71,5 @@ class QuestionpostsController extends Controller
         return redirect()->back();
     }
     
-    public function search(){
-	$query = Request::get('q');
-
-	if ($query) {
-		$questionposts = Question::where('content', 'LIKE', "%$query%")->paginate(10);
-	}else{
-		$questionposts = null;
-	}
-
-	return view('questionposts.search',
-	['questionposts' => $questionposts,
-	]);
-    }
+    
 }
