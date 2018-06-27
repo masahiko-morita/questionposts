@@ -20,7 +20,7 @@ class SearchController extends Controller
 		$questionposts = Question::where('content', 'LIKE', "%$query%")->paginate(10);
 	}else{
 		$questionposts = null;
-		$questionposts = new Question();
+		$questionposts = array();
 	}
 
 	return view('questionposts.search',

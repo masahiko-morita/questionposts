@@ -13,5 +13,6 @@
             </div>
     </div>
 </div>
+@include('questionposts.questionposts', ['questionposts' => $questionposts])
 
 @endsection
