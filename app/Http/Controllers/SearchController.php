@@ -21,6 +21,7 @@ class SearchController extends Controller
 	}else{
 		$questionposts = null;
 	}
+	var_dump($questionposts);
 /*
 	return view('questionposts.search',
 	['questionposts' => $questionposts,
