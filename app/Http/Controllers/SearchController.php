@@ -19,7 +19,6 @@ class SearchController extends Controller
 	if ($query) {
 		$questionposts = Question::where('content', 'LIKE', "%$query%")->paginate(10);
 	}else{
-		$questionposts = null;
 		$questionposts = array();
 	}
 
@@ -34,7 +33,7 @@ class SearchController extends Controller
 	if ($query) {
 		$users = User::where('name', 'LIKE', "%$query%")->paginate(10);
 	}else{
-		$users = null;
+		$users = array();
 	}
 
 	return view('users.search',
