@@ -20,8 +20,8 @@
                 <li role="presentation" class="{{ Request::is('users/' . $user->id) ? 'active' : '' }}"><a href="{{ route('users.show', ['id' => $user->id]) }}">TimeLine <span class="badge">{{ $count_questionposts }}</span></a></li>
                 <li role="presentation" class="{{ Request::is('users/*/followings') ? 'active' : '' }}"><a href="{{ route('users.followings', ['id' => $user->id]) }}">Followings <span class="badge">{{ $count_followings }}</span></a></li>
                 <li role="presentation" class="{{ Request::is('users/*/followers') ? 'active' : '' }}"><a href="{{ route('users.followers', ['id' => $user->id]) }}">Followers <span class="badge">{{ $count_followers }}</span></a></li>
-                <li role="presentation" class="{{ Request::is('users/*/yes_questions') ? 'active' : '' }}"><a href="{{ route('users.yes_questions', ['id' => $user->id]) }}">Yesと答えた質問 <span class="badge">{{ $count_yes_questions }}</span></a></li>
-                <li role="presentation" class="{{ Request::is('users/*/no_questions') ? 'active' : '' }}"><a href="{{ route('users.no_questions', ['id' => $user->id]) }}">Noと答えた質問 <span class="badge">{{ $count_no_questions }}</span></a></li>
+                <li role="presentation" class="{{ Request::is('users/*/yes_questions') ? 'active' : '' }}"><a href="{{ route('users.yes_questions', ['id' => $user->id]) }}">赤を押した質問 <span class="badge">{{ $count_yes_questions }}</span></a></li>
+                <li role="presentation" class="{{ Request::is('users/*/no_questions') ? 'active' : '' }}"><a href="{{ route('users.no_questions', ['id' => $user->id]) }}">青を押した質問 <span class="badge">{{ $count_no_questions }}</span></a></li>
             </ul>
             @if (Auth::id() == $user->id)
                   {!! Form::open(['route' => 'questionposts.store']) !!}
