@@ -13,7 +13,7 @@ use App\Http\Controllers\Controller;
 class SearchController extends Controller
 {
     public function questionpostsearch(){
-    	/*
+    	
 	$query = Request::get('q');
 
 	if ($query) {
@@ -21,7 +21,7 @@ class SearchController extends Controller
 	}else{
 		$questionposts = null;
 	}
-
+/*
 	return view('questionposts.search',
 	['questionposts' => $questionposts,
 	]);*/
